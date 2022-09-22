@@ -1,5 +1,3 @@
-
-
 //class Result {
 //    public static String timeConversion() {
 //        Date dt = new Date();   // making a new date object                         // lowercase k equates to hour(1-24)
@@ -14,7 +12,7 @@ class Demo {
         if (str.endsWith("PM")) {   // if input ends with PM
             hour += 12;             // add 12
         }
-        return String.format("%02d", hour);     // replace first two digits with new #, remove AM/PM suffix
+        return String.format("%02d", hour) + str.substring(2, 8);     // replace first two digits with new #, remove AM/PM suffix
     }
 }
 
@@ -22,6 +20,7 @@ public class Solution {
     public static void main(String[] args) {
         //System.out.println(Result.timeConversion());    // testing
         System.out.println(Demo.convDemo("12:30:45PM"));    // testing
+
 
     }
 }
