@@ -11,7 +11,7 @@ class Demo {
         int hour = Integer.parseInt(str.substring(0, 2)) % 12;  // beg. index and ending index. if # = 12, set it to 0
         if (str.endsWith("PM")) {   // if input ends with PM
             hour += 12;             // add 12
-        }
+        }                   // %02d = format integer w/ 2 digits, left-padding w/ zeroes
         return String.format("%02d", hour) + str.substring(2, 8);     // replace first two digits with new #, remove AM/PM suffix
     }
 }
@@ -20,7 +20,5 @@ public class Solution {
     public static void main(String[] args) {
         //System.out.println(Result.timeConversion());    // testing
         System.out.println(Demo.convDemo("12:30:45PM"));    // testing
-
-
     }
 }
