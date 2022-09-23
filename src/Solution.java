@@ -3,14 +3,16 @@ import java.lang.*;
 
 class Demo {
     public static int Solve(String[] A) {
-        boolean[] char_set = new boolean[128];
+        String str = Arrays.toString(A);
+        if (str.length() > 128) return 0;       // base case if string length exceeds # of unique characters in alphabet
 
+        boolean[] char_set = new boolean[128];
         for (int i = 0; i < A.length; i++) {
-            char val = Arrays.toString(A).charAt(i);
+            int val = Arrays.toString(A).charAt(i);     // return each character of string in array
             if (char_set[val]) {    // if we already found this character in the string, return false
                 return 0;
             }
-            char_set[val] = true;   // returns true if we havent found this character in the string
+            char_set[val] = true;   // returns true if we haven't found this character in the string
         }
         return 1;   // return true if unique
     }
