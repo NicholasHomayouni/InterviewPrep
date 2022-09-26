@@ -1,27 +1,21 @@
 import java.util.ArrayList;
 
 class Demo {
-    public int Solve(ArrayList<String> A) {
-        //if (A.size() > 26) return 0;
-        boolean[] boolArr = new boolean[A.size()];
-        int abcIndex = 0;
-        for (int i = 0; i < A.size(); i++) {
-            String str = A.get(i);  // get each index and store it as a string
-            if('a' <= str.charAt(i) & 'z' >= str.charAt(i)) {
-                abcIndex = str.charAt(i) - 'a';
-                boolArr[abcIndex] = true;
-            //    return 0;
-            }
-        }
-        for (boolean index : boolArr) {
-            if (!index) {
+    public static int Solve(ArrayList<String> A) {
+        String str = A.toString();
+        // Array 'seen' of size 26.
+        boolean[] identified = new boolean[26];
+
+        // For every letter 'currChar', we find its ASCII code,
+        // and update value at the mapped index as true.
+        for (char currChar : str.toCharArray())
+            identified[currChar - 'a'] = true;
+
+        // Once we finish iterating, check if 'seen' contains false.
+        for (boolean status : identified)
+            if (!status)
                 return 0;
-            }
-        } return 1;
-//        if ( <= 26)
-//            return 1;
-//        else
-//            return 0;
+        return 1;
     }
 }
 
