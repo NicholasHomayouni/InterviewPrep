@@ -4,9 +4,9 @@ import java.util.Set;
 class Demo {
     public static int Solve(String[] A) {
         Set<Character> char_set = new HashSet<>();
-        for (int i = 0; i <A.length; i++) {
+        for (int i = 0; i <A.length; i++) {     // NOTE: A.length returns length of array (9 for ex.)
             String str = A[i];
-            for (int j = 0; j < str.length(); j++) {
+            for (int j = 0; j < str.length(); j++) {    //NOTE: str.length() returns length of each "string"
                 char_set.add(str.charAt(j));
             }
         }
