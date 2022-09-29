@@ -2,14 +2,12 @@ class Result {
     // function to flip matrix along diagonals
     public static int[][] diagonalFlip(int[][] A) {
         int n = A.length;
-        int m = A[0].length;
-        int temp = 0;
-        for (int i = 0; i < m / 2; i++) {
-            for (int j = 1; j < n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
                 // do diagonal flipping alg...
-                temp = A[i][j];
-                A[i][j] = A[m - 1 - i][n - 1- j];
-                A[m - 1 - i][n - 1 - j] = temp;
+                int temp = A[i][j];
+                A[i][j] = A[j][i];
+                A[j][i] = temp;
             }
         }
         return A;
