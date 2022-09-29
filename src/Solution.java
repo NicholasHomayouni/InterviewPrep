@@ -32,13 +32,13 @@ class Result {
         Set<Character> char_set = new HashSet<>();
         for (int i = 0; i < A.length(); i++) {
             char c = A.charAt(i);
-            if (A.contains("@") || A.contains("&") || A.contains("%")
-                                || A.contains("$") || A.contains("#") || A.contains("*")
-                                && Character.isUpperCase(c)) {
-            } else
-                return 0;
         }
-        if (char_set.equals(A)){
+        if (A.contains("@") || A.contains("&") || A.contains("%")
+                || A.contains("$") || A.contains("#") || A.contains("*")
+                && A.contains(0 ... 9) >= 1
+                && Character.isUpperCase(c) >= 1
+                && Character.isLowerCase(c) >= 1
+                && A.length() >= 8 || A.length() <= 15) {
             return 1;
         } else
             return 0;
