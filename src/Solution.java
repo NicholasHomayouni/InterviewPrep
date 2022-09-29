@@ -1,13 +1,15 @@
-
-
 class Result {
     // function to flip matrix along diagonals
     public static int[][] diagonalFlip(int[][] A) {
         int n = A.length;
         int m = A[0].length;
-        for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < A.length; j++) {
-
+        int temp = 0;
+        for (int i = 0; i < m / 2; i++) {
+            for (int j = 1; j < n; j++) {
+                // do diagonal flipping alg...
+                temp = A[i][j];
+                A[i][j] = A[m - 1 - i][n - 1- j];
+                A[m - 1 - i][n - 1 - j] = temp;
             }
         }
         return A;
@@ -21,7 +23,7 @@ class Result {
         int i, j;
         for (i = 0; i < m; i++) {
             for (j = 0; j < n; j++) {
-                System.out.print(A[i][j]+ "  ");
+                System.out.print(A[i][j] + "  ");
             }
             System.out.println();
         }
@@ -31,7 +33,9 @@ class Result {
 
 public class Solution {
     public static void main(String[] args) {
-        int[][] arr = new int[4][4];
+        int[][] arr = { {1,2},
+                        {3,4}};
+        Result.diagonalFlip(arr);
         Result.show(arr);
     }
 }
