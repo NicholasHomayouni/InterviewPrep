@@ -1,25 +1,26 @@
-import java.util.HashSet;
-import java.util.Set;
-/*
-Password MUST:
-- have at least one digit (0-9)
-- length between 8-15 characters
-- have at least one lowercase letter (a-z) and one uppercase letter (A-Z)
-- have at least one special character (@,#,%,$,!,*,&)
- */
 class Result {
     static int solve(String A) {
+        char[] charArr = A.toCharArray();
+        boolean val = true;
         for (int i = 0; i < A.length(); i++) {
-            char c = A.charAt(i);
+            if(!Character.isDigit(A.charAt(i))) {
+                val = false;
+            } else if (!Character.isUpperCase(A.charAt(i))) {
+                val = false;
+            } else if (!Character.isLowerCase(A.charAt(i))) {
+                val = false;
+            } else if (A.charAt(i) == '!' || A.charAt(i) == '@'
+                    || A.charAt(i) == '#' || A.charAt(i) == '$'
+                    || A.charAt(i) == '%' || A.charAt(i) == '&' || A.charAt(i) == '*') {
+                val = true;
+            }
         }
-        if (A.contains("@") || A.contains("&") || A.contains("%")
-                || A.contains("$") || A.contains("#") || A.contains("*")
-                && A.contains(0 ... 9) >= 1
-                && Character.isUpperCase(c) >= 1
-                && Character.isLowerCase(c) >= 1
-                && A.length() >= 8 || A.length() <= 15) {
+        if (A.length() < 8 || A.length() > 15) {
+            return 0;
+        }
+        if (val)
             return 1;
-        } else
+        else
             return 0;
     }
 }
