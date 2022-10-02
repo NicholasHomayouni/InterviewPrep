@@ -1,25 +1,26 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 class Demo {
-    public static int Solve(String[] A) {
-        Set<Character> char_set = new HashSet<>();
-        for (int i = 0; i <A.length; i++) {     // NOTE: A.length returns length of array (9 for ex.)
-            String str = A[i];
-            for (int j = 0; j < str.length(); j++) {    //NOTE: str.length() returns length of each "string"
-                char_set.add(str.charAt(j));
+    public static ArrayList<ArrayList<Integer>> Solve(ArrayList<ArrayList<Integer>> A) {
+        ArrayList<ArrayList<Integer>> B = new ArrayList<ArrayList<Integer>>();
+        for (int i = 0; i < A.size(); i++) {
+            B.add(new ArrayList<Integer>());
+
+            for (int j = 0; j < A.get(i).size(); j++) {
+                B.get(i).add(0);
+            }
+
+            for (int j = 0; j < A.get(i).size(); j++) {
+                B.get(i).set(A.get(i).size() - 1 - j, A.get(i).get(j));
             }
         }
-        if (char_set.size() == 26)
-            return 1;
-        else
-            return 0;
+        return B;
     }
 }
 
 public class Solution {
     public static void main(String[] args) {
-        String[] s = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        ArrayList<ArrayList<Integer>> s = new ArrayList<>();
         Demo.Solve(s);
     }
 }
