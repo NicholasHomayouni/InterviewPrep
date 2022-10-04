@@ -1,38 +1,35 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-// given an unsorted array A, find if k exists in A or not
+/*
+Given two integers, l and r, print all the odd numbers between l and r
+Return an array of integers denoting the odd numbers between l and r
+
+Ex: input (2,5)     output (3,5)       explanation   l == 2 and r == 5
+                                                     odd numbers between 2-5 is (3,5)
+
+
+ */
 class Demo {
-    public static String Solve(List<Integer> A, int k) {
-        Collections.sort(A);
-        boolean test = false;
-        for (int e : A) {
-            if (e == k) {
-                test = true;
-                break;
+    public static List<Integer> Solve(int l, int r) {
+        List<Integer> odd = new ArrayList<>();
+        int curr = l;
+        while (curr < r) {
+            if (curr % 2 != 0) {
+                odd.add(curr);
             }
+            curr++;
         }
-        if (test) {
-            return "YES";
-        }
-        else
-            return "NO";
+        return odd;
     }
 
 }
 
 public class Solution {
     public static void main(String[] args) {
-        List<Integer> s = new ArrayList<>();
-        s.add(3);
-        s.add(-56);
-        s.add(123);
-        s.add(34);
-        s.add(56);
-        s.add(-33);
 
-        int k = 35;
+        int l = 4;
+        int r = 12;
 
-        Demo.Solve(s, k);
+        Demo.Solve(l, r);
     }
 }
