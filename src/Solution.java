@@ -1,26 +1,38 @@
 import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.List;
+// given an unsorted array A, find if k exists in A or not
 class Demo {
-    public static ArrayList<ArrayList<Integer>> Solve(ArrayList<ArrayList<Integer>> A) {
-        ArrayList<ArrayList<Integer>> B = new ArrayList<ArrayList<Integer>>();
-        for (int i = 0; i < A.size(); i++) {
-            B.add(new ArrayList<Integer>());
-
-            for (int j = 0; j < A.get(i).size(); j++) {
-                B.get(i).add(0);
-            }
-
-            for (int j = 0; j < A.get(i).size(); j++) {
-                B.get(i).set(A.get(i).size() - 1 - j, A.get(i).get(j));
+    public static String Solve(List<Integer> A, int k) {
+        Collections.sort(A);
+        boolean test = false;
+        for (int e : A) {
+            if (e == k) {
+                test = true;
+                break;
             }
         }
-        return B;
+        if (test) {
+            return "YES";
+        }
+        else
+            return "NO";
     }
+
 }
 
 public class Solution {
     public static void main(String[] args) {
-        ArrayList<ArrayList<Integer>> s = new ArrayList<>();
-        Demo.Solve(s);
+        List<Integer> s = new ArrayList<>();
+        s.add(3);
+        s.add(-56);
+        s.add(123);
+        s.add(34);
+        s.add(56);
+        s.add(-33);
+
+        int k = 35;
+
+        Demo.Solve(s, k);
     }
 }
