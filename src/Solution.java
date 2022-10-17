@@ -1,30 +1,37 @@
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 
-class Demo {
-    public int[] set_intersection(HashSet<Integer> set1, HashSet<Integer> set2) {
-        int[] output = new int[set1.size()];
-        int idx = 0;
-        for (Integer s : set1)
-            if (set2.contains(s)) output[idx++] = s;
-
-        return Arrays.copyOf(output, idx);
-    }
-
-    public int[] intersection(int[] nums1, int[] nums2) {
-        HashSet<Integer> set1 = new HashSet<Integer>(); // CONVERT BOTH ARRAYS INTO SETS
-        for (Integer n : nums1) set1.add(n);
-
-        HashSet<Integer> set2 = new HashSet<Integer>(); // CONVERT BOTH ARRAYS INTO SETS
-        for (Integer n : nums2) set2.add(n);
-
-        if (set1.size() < set2.size()) return set_intersection(set1, set2);
-        else return set_intersection(set2, set1);
-    }
-}
-
+// "static void main" must be defined in a public class.
 public class Solution {
     public static void main(String[] args) {
-
+        // 1. initialize a hash map
+        Map<Integer, Integer> hashmap = new HashMap<>();
+        // 2. insert a new (key, value) pair
+        hashmap.putIfAbsent(0, 0);
+        hashmap.putIfAbsent(2, 3);
+        // 3. insert a new (key, value) pair or update the value of existed key
+        hashmap.put(1, 1);
+        hashmap.put(1, 2);
+        // 4. get the value of specific key
+        System.out.println("The value of key 1 is: " + hashmap.get(1));
+        // 5. delete a key
+        hashmap.remove(2);
+        // 6. check if a key is in the hash map
+        if (!hashmap.containsKey(2)) {
+            System.out.println("Key 2 is not in the hash map.");
+        }
+        // 7. get the size of the hash map
+        System.out.println("The size of hash map is: " + hashmap.size());
+        // 8. iterate the hash map
+        for (Map.Entry<Integer, Integer> entry : hashmap.entrySet()) {
+            System.out.print("(" + entry.getKey() + "," + entry.getValue() + ") ");
+        }
+        System.out.println("are in the hash map.");
+        // 9. clear the hash map
+        hashmap.clear();
+        // 10. check if the hash map is empty
+        if (hashmap.isEmpty()) {
+            System.out.println("hash map is empty now!");
+        }
     }
 }
