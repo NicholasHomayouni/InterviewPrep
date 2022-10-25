@@ -5,7 +5,7 @@ import java.util.Map;
 public class Solution {
     public static void main(String[] args) {
         // 1. initialize a hash map
-        Map<Integer, Integer> hashmap = new HashMap<>();
+        HashMap<Integer, Integer> hashmap = new HashMap<>();
         // 2. insert a new (key, value) pair
         hashmap.putIfAbsent(0, 0);
         hashmap.putIfAbsent(2, 3);
