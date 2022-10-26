@@ -1,27 +1,33 @@
+import java.util.ArrayList;
 import java.util.HashMap;
-
+// intersection of two arrays II
 class Demo {
-    public static int firstUniqChar(String s) {
-        // HashMap <characters, #times occurred> if unique, value should be 1
-        HashMap<Character, Integer> map = new HashMap<>();
-        // go through string and save in hashmap # of times each char appears
-        for (int i=0; i<s.length(); ++i) {
-            char c = s.charAt(i);
-            map.put(c, map.getOrDefault(c, 0) + 1 );
+    public static int[] intersect(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i=0; i<nums1.length; i++) {
+            map.put(nums1[i], map.getOrDefault(nums1[i], 0) + 1);
         }
 
-        // find the index using the hashmap as a reference to check chars for uniqueness
-        for (int i=0; i<s.length(); ++i) {
-            if (map.get(s.charAt(i)) == 1)
-                return i;
+        for (int i=0; i<nums2.length; i++) {
+            if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
+                result.add(nums2[i]);
+                map.put(nums2[i], map.getOrDefault(nums2[i], 0) - 1);
+            }
         }
-        return -1;
+
+        int[] r = new int[result.size()];
+        for (int i=0; i<result.size(); ++i){
+            r[i] = result.get(i);
+        }
+        return r;
     }
 }
 
 public class Solution {
     public static void main(String[] args) {
-        String s = "LOVELEETCODE";
-        Demo.firstUniqChar(s);
+        int[] nums1 = { 2,3,4,2,5,1};
+        int[] nums2 = { 3,1,4};
+        Demo.intersect(nums1, nums2);
     }
 }
